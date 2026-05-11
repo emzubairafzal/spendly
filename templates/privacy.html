@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy — Spendly{% endblock %}
+
+{% block content %}
+
+<div class="legal-page">
+
+    <header class="legal-page-header">
+        <div class="hero-badge">Legal</div>
+        <h1 class="legal-page-title">Privacy Policy</h1>
+        <p class="legal-page-meta">Last updated: May 2026</p>
+    </header>
+
+    <section class="legal-section">
+        <h2>1. Data We Collect</h2>
+        <p>When you use Spendly, we collect only the information necessary to provide the service:</p>
+        <ul>
+            <li><strong>Account information</strong> — your name, email address, and hashed password when you register</li>
+            <li><strong>Expense data</strong> — amounts, categories, dates, and descriptions you enter</li>
+            <li><strong>Usage data</strong> — basic logs such as page visits and error reports, used solely for keeping the app stable</li>
+        </ul>
+        <p>We do not collect payment information, government IDs, or any sensitive personal data beyond what is listed above.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>2. How We Use Your Data</h2>
+        <p>Your data is used exclusively to operate and improve Spendly:</p>
+        <ul>
+            <li>Authenticating your account and keeping your session secure</li>
+            <li>Displaying your expense history, summaries, and category breakdowns</li>
+            <li>Diagnosing bugs and improving app performance</li>
+        </ul>
+        <p>We will never use your financial data for advertising, profiling, or any purpose unrelated to providing the service to you.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>3. Data Storage</h2>
+        <p>Your data is stored on secured servers. Passwords are hashed and never stored in plain text. Expense records are associated with your account and are not accessible to other users.</p>
+        <p>You can request deletion of your account and all associated data at any time by contacting us. Upon deletion, your data will be permanently removed from our systems within 30 days.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>4. Third-Party Services</h2>
+        <p>Spendly does not sell or share your personal data with third parties. We may use the following limited external services to operate the platform:</p>
+        <ul>
+            <li><strong>Hosting providers</strong> — to store and serve the application; these providers are bound by data processing agreements</li>
+            <li><strong>Font services</strong> — Google Fonts is loaded to render the app's typography; no personal data is shared in this process</li>
+        </ul>
+        <p>No advertising networks, analytics platforms, or data brokers have access to your information.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>5. Cookies and Sessions</h2>
+        <p>Spendly uses a single session cookie to keep you logged in. This cookie contains no personal information and expires when you sign out or close your browser. We do not use tracking cookies or third-party cookies of any kind.</p>
+    </section>
+
+    <section class="legal-section">
+        <h2>6. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, or would like to request access to or deletion of your data, please reach out through the app. We aim to respond to all privacy-related requests within 7 business days.</p>
+        <p>You can also review our <a href="/terms" style="color: var(--accent);">Terms and Conditions</a> for more information about how you may use Spendly.</p>
+    </section>
+
+</div>
+
+{% endblock %}
