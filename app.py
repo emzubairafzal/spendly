@@ -79,7 +79,7 @@ def login():
 
     session.clear()
     session["user_id"] = user["id"]
-    return redirect(url_for("landing"))
+    return redirect(url_for("profile"))
 
 
 @app.route("/terms")
@@ -104,7 +104,49 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    user = {
+        "name": "Demo User",
+        "email": "demo@spendly.com",
+        "member_since": "1 May 2026",
+    }
+
+    stats = {
+        "total_spent": "£296.24",
+        "transaction_count": 8,
+        "top_category": "Bills",
+    }
+
+    transactions = [
+        {"date": "1 May 2026",  "description": "Grocery shopping",    "category": "Food",          "amount": "£45.50"},
+        {"date": "3 May 2026",  "description": "Bus pass",             "category": "Transport",     "amount": "£12.00"},
+        {"date": "5 May 2026",  "description": "Electricity bill",     "category": "Bills",         "amount": "£85.00"},
+        {"date": "8 May 2026",  "description": "Pharmacy",             "category": "Health",        "amount": "£30.00"},
+        {"date": "10 May 2026", "description": "Netflix subscription", "category": "Entertainment", "amount": "£15.99"},
+        {"date": "12 May 2026", "description": "New shirt",            "category": "Shopping",      "amount": "£60.00"},
+        {"date": "14 May 2026", "description": "Miscellaneous",        "category": "Other",         "amount": "£25.00"},
+        {"date": "16 May 2026", "description": "Restaurant lunch",     "category": "Food",          "amount": "£22.75"},
+    ]
+
+    categories = [
+        {"name": "Bills",         "total": "£85.00", "pct": 100},
+        {"name": "Food",          "total": "£68.25", "pct": 80},
+        {"name": "Shopping",      "total": "£60.00", "pct": 71},
+        {"name": "Health",        "total": "£30.00", "pct": 35},
+        {"name": "Other",         "total": "£25.00", "pct": 29},
+        {"name": "Entertainment", "total": "£15.99", "pct": 19},
+        {"name": "Transport",     "total": "£12.00", "pct": 14},
+    ]
+
+    return render_template(
+        "profile.html",
+        user=user,
+        stats=stats,
+        transactions=transactions,
+        categories=categories,
+    )
 
 
 @app.route("/expenses/add")
