@@ -1,0 +1,230 @@
+/* ------------------------------------------------------------------ */
+/* Profile page                                                         */
+/* ------------------------------------------------------------------ */
+
+.profile-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 3rem 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Card shell (reused across all four sections)                         */
+/* ------------------------------------------------------------------ */
+
+.profile-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 2rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* User info card                                                       */
+/* ------------------------------------------------------------------ */
+
+.profile-user {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.profile-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--paper-card);
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.profile-meta { display: flex; flex-direction: column; gap: 0.2rem; }
+
+.profile-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--ink);
+    line-height: 1.2;
+}
+
+.profile-email {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+}
+
+.profile-since {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+    margin-top: 0.15rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Stats row                                                            */
+/* ------------------------------------------------------------------ */
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--ink);
+    line-height: 1.1;
+}
+
+/* ------------------------------------------------------------------ */
+/* Section heading (shared by table + breakdown cards)                  */
+/* ------------------------------------------------------------------ */
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Transaction table                                                    */
+/* ------------------------------------------------------------------ */
+
+.tx-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.tx-table th {
+    text-align: left;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0 0 0.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.tx-table td {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--ink-soft);
+    vertical-align: middle;
+}
+
+.tx-table tr:last-child td { border-bottom: none; }
+
+.tx-amount {
+    text-align: right;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Category badges                                                      */
+/* ------------------------------------------------------------------ */
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge--food,
+.badge--health     { background: var(--accent-light);   color: var(--accent); }
+.badge--bills      { background: var(--danger-light);   color: var(--danger); }
+.badge--transport,
+.badge--shopping,
+.badge--entertainment { background: var(--accent-2-light); color: var(--accent-2); }
+.badge--other      { background: var(--border-soft);    color: var(--ink-muted); }
+
+/* ------------------------------------------------------------------ */
+/* Category breakdown bars                                              */
+/* ------------------------------------------------------------------ */
+
+.cat-list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+.cat-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.cat-name {
+    width: 110px;
+    flex-shrink: 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.cat-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--border-soft);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.cat-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    width: var(--bar-width);
+}
+
+.cat-fill--bills          { background: var(--danger); }
+.cat-fill--food,
+.cat-fill--health         { background: var(--accent); }
+.cat-fill--shopping,
+.cat-fill--transport,
+.cat-fill--entertainment,
+.cat-fill--other          { background: var(--accent-2); }
+
+.cat-total {
+    width: 60px;
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                           */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 700px) {
+    .profile-stats { grid-template-columns: 1fr; }
+    .profile-user  { flex-direction: column; align-items: flex-start; }
+    .tx-table      { font-size: 0.8rem; }
+    .cat-name      { width: 80px; }
+}
