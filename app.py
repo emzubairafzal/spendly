@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from flask import Flask, abort, flash, redirect, render_template, request, session, url_for
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -114,12 +116,32 @@ def profile():
         return redirect(url_for("login"))
 
     uid = session["user_id"]
+
+    def _validated_date(raw):
+        try:
+            datetime.strptime(raw.strip(), "%Y-%m-%d")
+            return raw.strip()
+        except (ValueError, AttributeError):
+            return ""
+
+    start = _validated_date(request.args.get("start", ""))
+    end = _validated_date(request.args.get("end", ""))
+
+    if start and end and start > end:
+        start = ""
+        end = ""
+
+    sd = start or None
+    ed = end or None
+
     return render_template(
         "profile.html",
         user=get_user_by_id(uid),
-        stats=get_summary_stats(uid),
-        transactions=get_recent_transactions(uid),
-        categories=get_category_breakdown(uid),
+        stats=get_summary_stats(uid, sd, ed),
+        transactions=get_recent_transactions(uid, start_date=sd, end_date=ed),
+        categories=get_category_breakdown(uid, sd, ed),
+        start=start,
+        end=end,
     )
 
 
